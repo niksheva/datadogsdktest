@@ -21,5 +21,4 @@ class ApiHelper(val api: ApiService) {
         } else
             Result.Failure
     }
-
 }

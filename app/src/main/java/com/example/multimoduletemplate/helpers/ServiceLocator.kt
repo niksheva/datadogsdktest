@@ -1,6 +1,5 @@
-package com.example.multimoduletemplate
+package com.example.multimoduletemplate.helpers
 
-import com.example.multimoduletemplate.helpers.CoroutineDispatcherFactoryDefault
 import com.example.multimoduletemplate.layers.ApiHelper
 import com.example.multimoduletemplate.layers.ApiService
 import com.example.multimoduletemplate.layers.Presenter
@@ -20,10 +19,15 @@ class ServiceLocator {
             .build()
     }
 
-    private val apiService: ApiService = getRetrofit().create(ApiService::class.java)
+    private val apiService: ApiService = getRetrofit().create(
+        ApiService::class.java)
 
-    private val apiHelper: ApiHelper = ApiHelper(apiService)
+    private val apiHelper: ApiHelper =
+        ApiHelper(apiService)
 
     val presenter
-        get() = Presenter(CoroutineDispatcherFactoryDefault(), apiHelper)
+        get() = Presenter(
+            CoroutineDispatcherFactoryDefault(),
+            apiHelper
+        )
 }

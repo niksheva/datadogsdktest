@@ -10,7 +10,13 @@ private const val TIME = "time"
 private const val CLASS_NAME = "className"
 private const val RESULT = "result"
 
-fun incrementMetric(sliName: String, layer: String, time: Long, className: String, success: Boolean) {
+fun incrementMetric(
+    sliName: String,
+    layer: String,
+    time: Long,
+    className: String,
+    success: Boolean
+) {
     val attributes = hashMapOf(
         Pair(LAYER, layer),
         Pair(CLASS_NAME, className),
@@ -20,4 +26,5 @@ fun incrementMetric(sliName: String, layer: String, time: Long, className: Strin
     println("DataDogMetrics: $sliName - $className - $time - $success")
     // CURRENTLY RESOLVING ISSUE: it seems like not all the events are showing inn the dashboard
     GlobalRum.get().addUserAction(CUSTOM, sliName, attributes)
+    GlobalRum.get().startResource("SLI resources", sliName, "", attributes)
 }

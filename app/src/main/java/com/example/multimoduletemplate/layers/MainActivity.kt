@@ -1,9 +1,10 @@
-package com.example.multimoduletemplate
+package com.example.multimoduletemplate.layers
 
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import com.example.multimoduletemplate.R
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,7 +14,9 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbar))
 
         supportFragmentManager.beginTransaction().apply {
-            replace(R.id.fragment_view, SecondFragment.newInstance(), null)
+            replace(
+                R.id.fragment_view,
+                SecondFragment.newInstance(), null)
             commit()
         }
     }
